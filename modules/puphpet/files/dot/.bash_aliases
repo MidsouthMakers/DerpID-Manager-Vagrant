@@ -3,13 +3,8 @@ if [ -f /etc/bash_completion ]; then
 fi
 
 __has_parent_dir () {
-<<<<<<< HEAD
-    # Utility function so we can test for things like .git/.hg without firing up a
-    # separate process
-=======
     # Utility function so we can test for things like .git/.hg without firing
     # up a separate process
->>>>>>> f96fe9d44d7b80899fb28b9102c5a87ccc8e4094
     test -d "$1" && return 0;
 
     current="."
@@ -44,10 +39,6 @@ lt_blue=$(tput -Txterm setaf 6)
 bold=$(tput -Txterm bold)
 reset=$(tput -Txterm sgr0)
 
-<<<<<<< HEAD
-# Nicely formatted terminal prompt
-=======
->>>>>>> f96fe9d44d7b80899fb28b9102c5a87ccc8e4094
 export PS1='\n\[$bold\]\[$black\][\[$dk_blue\]\@\[$black\]]-[\[$green\]\u\[$yellow\]@\[$green\]\h\[$black\]]-[\[$pink\]\w\[$black\]]\[\033[0;33m\]$(__vcs_name) \[\033[00m\]\[$reset\]\n\[$reset\]\$ '
 
 alias ls='ls -F --color=always'
@@ -58,8 +49,4 @@ alias rm='rm -i'
 alias mv='mv -iv'
 alias grep='grep --color=auto -in'
 alias v='vim'
-<<<<<<< HEAD
 alias ..='cd ..'
-=======
-alias ..='cd ..'
->>>>>>> f96fe9d44d7b80899fb28b9102c5a87ccc8e4094

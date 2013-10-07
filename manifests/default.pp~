@@ -13,7 +13,7 @@ and title != 'software-properties-common'
 
     apt::key { '4F4EA0AAE5267A6C': }
 
-apt::ppa { 'ppa:ondrej/php5-oldstable':
+apt::ppa { 'ppa:ondrej/php5':
   require => Apt::Key['4F4EA0AAE5267A6C']
 }
 
@@ -36,12 +36,12 @@ apache::dotconf { 'custom':
 
 apache::module { 'rewrite': }
 
-apache::vhost { 'rfid-php-crud.dev':
-  server_name   => 'rfid-php-crud.dev',
+apache::vhost { 'derpid-manager.dev':
+  server_name   => 'derpid-manager.dev',
   serveraliases => [
-    'www.rfid-php-crud.dev'
+    'www.derpid-manager.dev'
   ],
-  docroot       => '/var/www/rfid-php-crud.dev/public',
+  docroot       => '/var/www/derpid-manager.dev/public',
   port          => '80',
   env_variables => [
 ],
@@ -59,10 +59,18 @@ php::module { 'php5-cli': }
 php::module { 'php5-curl': }
 php::module { 'php5-intl': }
 php::module { 'php5-mcrypt': }
+php::module { 'php5-sqlite': }
 
 class { 'php::devel':
   require => Class['php'],
 }
+
+class { 'php::pear':
+  require => Class['php'],
+}
+
+
+
 
 
 class { 'xdebug':

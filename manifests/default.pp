@@ -13,33 +13,17 @@ and title != 'software-properties-common'
 
     apt::key { '4F4EA0AAE5267A6C': }
 
-<<<<<<< HEAD
 apt::ppa { 'ppa:ondrej/php5':
   require => Apt::Key['4F4EA0AAE5267A6C']
 }
 
-file { '/home/vagrant/.bash_aliases':
-  ensure => 'present',
-  source => 'puppet:///modules/puphpet/dot/.bash_aliases',
-}
-=======
-apt::ppa { 'ppa:ondrej/php5-oldstable':
-  require => Apt::Key['4F4EA0AAE5267A6C']
-}
-
 class { 'puphpet::dotfiles': }
->>>>>>> f96fe9d44d7b80899fb28b9102c5a87ccc8e4094
 
 package { [
     'build-essential',
     'vim',
     'curl',
-<<<<<<< HEAD
-    'git-core',
-    'git'
-=======
     'git-core'
->>>>>>> f96fe9d44d7b80899fb28b9102c5a87ccc8e4094
   ]:
   ensure  => 'installed',
 }
@@ -52,21 +36,12 @@ apache::dotconf { 'custom':
 
 apache::module { 'rewrite': }
 
-<<<<<<< HEAD
-apache::vhost { 'rfid-php-crud-laravel.dev':
-  server_name   => 'rfid-php-crud-laravel.dev',
+apache::vhost { 'derpid-manager.dev':
+  server_name   => 'derpid-manager.dev',
   serveraliases => [
-    'www.rfid-php-crud-laravel.dev'
+    'www.derpid-manager.dev'
   ],
-  docroot       => '/var/www/rfid-php-crud-laravel',
-=======
-apache::vhost { 'rfid-php-crud.dev':
-  server_name   => 'rfid-php-crud.dev',
-  serveraliases => [
-    'www.rfid-php-crud.dev'
-  ],
-  docroot       => '/var/www/rfid-php-crud.dev/public',
->>>>>>> f96fe9d44d7b80899fb28b9102c5a87ccc8e4094
+  docroot       => '/var/www/derpid-manager.dev/public',
   port          => '80',
   env_variables => [
 ],
@@ -74,15 +49,9 @@ apache::vhost { 'rfid-php-crud.dev':
 }
 
 class { 'php':
-<<<<<<< HEAD
-  service       => 'apache',
-  module_prefix => '',
-  require       => Package['apache'],
-=======
   service             => 'apache',
   service_autorestart => false,
   module_prefix       => '',
->>>>>>> f96fe9d44d7b80899fb28b9102c5a87ccc8e4094
 }
 
 php::module { 'php5-mysql': }
@@ -96,7 +65,6 @@ class { 'php::devel':
   require => Class['php'],
 }
 
-<<<<<<< HEAD
 class { 'php::pear':
   require => Class['php'],
 }
@@ -104,8 +72,6 @@ class { 'php::pear':
 
 
 
-=======
->>>>>>> f96fe9d44d7b80899fb28b9102c5a87ccc8e4094
 
 class { 'xdebug':
   service => 'apache',
@@ -154,8 +120,6 @@ class { 'mysql::server':
 }
 
 
-<<<<<<< HEAD
-=======
 class { 'phpmyadmin':
   require => [Class['mysql::server'], Class['mysql::config'], Class['php']],
 }
@@ -167,5 +131,4 @@ apache::vhost { 'phpmyadmin':
   priority    => '10',
   require     => Class['phpmyadmin'],
 }
->>>>>>> f96fe9d44d7b80899fb28b9102c5a87ccc8e4094
 

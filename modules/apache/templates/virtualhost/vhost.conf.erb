@@ -24,15 +24,6 @@
     ErrorLog  <%= scope.lookupvar('apache::log_dir') %>/<%= @name %>-error_log
     CustomLog <%= scope.lookupvar('apache::log_dir') %>/<%= @name %>-access_log common
 
-<<<<<<< HEAD
-=======
-<Directory "<%= @real_docroot %>">
-        AllowOverride All
-        Order Allow,Deny
-        Allow from all
-</Directory>
-
->>>>>>> f96fe9d44d7b80899fb28b9102c5a87ccc8e4094
 <% if @bool_passenger -%>
     PassengerHighPerformance <%= @bool_passenger_high_performance ? "On" : "Off" %>
     PassengerMaxPoolSize <%= @passenger_max_pool_size %>

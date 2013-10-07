@@ -14,11 +14,7 @@
 define puphpet::ini (
     $value    = '',
     $ini      = undef,
-<<<<<<< HEAD
-    $template = 'extra-ini.erb',
-=======
     $template = 'extra-ini.erb'
->>>>>>> f96fe9d44d7b80899fb28b9102c5a87ccc8e4094
 ) {
 
   if $ini {
