@@ -11,7 +11,7 @@ Class['::apt::update'] -> Package <|
 and title != 'software-properties-common'
 |>
 
-    apt::key { '4F4EA0AAE5267A6C': }
+apt::key { '4F4EA0AAE5267A6C': }
 
 apt::ppa { 'ppa:ondrej/php5':
   require => Apt::Key['4F4EA0AAE5267A6C']
@@ -43,8 +43,7 @@ apache::vhost { 'derpid-manager.dev':
   ],
   docroot       => '/var/www/derpid-manager.dev/public',
   port          => '80',
-  env_variables => [
-],
+  env_variables => [],
   priority      => '1',
 }
 
@@ -54,7 +53,6 @@ class { 'php':
   module_prefix       => '',
 }
 
-php::module { 'php5-mysql': }
 php::module { 'php5-cli': }
 php::module { 'php5-curl': }
 php::module { 'php5-intl': }
@@ -68,7 +66,10 @@ class { 'php::devel':
 class { 'php::pear':
   require => Class['php'],
 }
-
+file { "/etc/php5/conf.d":
+    ensure => "directory",
+    require => Class['php'],
+}
 class { 'xdebug':
   service => 'apache',
 }

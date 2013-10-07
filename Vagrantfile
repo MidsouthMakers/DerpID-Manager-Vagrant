@@ -10,17 +10,12 @@ Vagrant.configure("2") do |config|
     v.customize ["modifyvm", :id, "--memory", 512]
     v.customize ["modifyvm", :id, "--name", "DerpID-Manager"]
   end
-
   
   config.vm.synced_folder "./", "/var/www", id: "vagrant-root" 
   config.vm.synced_folder "/var/www/derpid-manager", "/var/www/derpid-manager",
     owner: "vagrant", group: "www-data"
   config.vm.provision :shell, :inline =>
     "if [[ ! -f /apt-get-run ]]; then sudo apt-get update && sudo touch /apt-get-run; fi"
-
-
-  config.vm.provision :shell, :inline => 'echo -e "mysql_root_password=vagrant
-controluser_password=awesome" > /etc/phpmyadmin.facts;'
 
   config.vm.provision :puppet do |puppet|
     puppet.manifests_path = "manifests"
