@@ -69,10 +69,6 @@ class { 'php::pear':
   require => Class['php'],
 }
 
-
-
-
-
 class { 'xdebug':
   service => 'apache',
 }
@@ -113,22 +109,3 @@ puphpet::ini { 'custom':
   notify  => Service['apache'],
   require => Class['php'],
 }
-
-
-class { 'mysql::server':
-  config_hash   => { 'root_password' => 'vagrant' }
-}
-
-
-class { 'phpmyadmin':
-  require => [Class['mysql::server'], Class['mysql::config'], Class['php']],
-}
-
-apache::vhost { 'phpmyadmin':
-  server_name => 'phpmyadmin',
-  docroot     => '/usr/share/phpmyadmin',
-  port        => 80,
-  priority    => '10',
-  require     => Class['phpmyadmin'],
-}
-
