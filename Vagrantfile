@@ -8,11 +8,13 @@ Vagrant.configure("2") do |config|
   config.vm.provider :virtualbox do |v|
     v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
     v.customize ["modifyvm", :id, "--memory", 512]
-    v.customize ["modifyvm", :id, "--name", "my-first-box"]
+    v.customize ["modifyvm", :id, "--name", "DerpID-Manager"]
   end
 
   
   config.vm.synced_folder "./", "/var/www", id: "vagrant-root" 
+  config.vm.synced_folder "/var/www/derpid-manager", "/var/www/derpid-manager",
+    owner: "vagrant", group: "www-data"
   config.vm.provision :shell, :inline =>
     "if [[ ! -f /apt-get-run ]]; then sudo apt-get update && sudo touch /apt-get-run; fi"
 
