@@ -1,12 +1,10 @@
-## Vagrant box for RFID-PHP-CRUD boxen
+## DerpID-Manager-Vagrant
 
-Vagrant box for use with rfid-php-crud applications
-==
+A vagrant & puppet configuration for [DerpID-Manager](https://github.com/svpernova09/DerpID-Manager)
+
+Original Configuration from [puphpet](https://github.com/puphpet/puphpet)
+
 
 Usage
 ==
-
-* Clone
-* tweak manifests/default.pp as needed
-* tweak Vagrantfile as needed
-
+- Assumes you have [DerpID-Manager](https://github.com/svpernova09/DerpID-Manager) cloned to /var/www/DerpID-Manager. Tweak Vagrantfile & manifests/default.pp as needed.
