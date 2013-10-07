@@ -11,7 +11,6 @@ Vagrant.configure("2") do |config|
     v.customize ["modifyvm", :id, "--name", "DerpID-Manager"]
   end
   
-  config.vm.synced_folder "./", "/var/www", id: "vagrant-root" 
   config.vm.synced_folder "/var/www/derpid-manager", "/var/www/derpid-manager",
     owner: "vagrant", group: "www-data"
   config.vm.provision :shell, :inline =>
