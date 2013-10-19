@@ -45,6 +45,7 @@ apache::vhost { 'derpid-manager.dev':
   port          => '80',
   env_variables => [],
   priority      => '1',
+  directory_allow_override      => 'All'
 }
 
 class { 'php':
