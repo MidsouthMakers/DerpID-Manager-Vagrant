@@ -11,7 +11,7 @@ Vagrant.configure("2") do |config|
     v.customize ["modifyvm", :id, "--name", "DerpID-Manager"]
   end
   
-  config.vm.synced_folder "/var/www/derpid-manager", "/var/www/derpid-manager",
+  config.vm.synced_folder "/var/www/derpid-manager.dev", "/var/www/derpid-manager.dev",
     owner: "vagrant", group: "www-data"
   config.vm.provision :shell, :inline =>
     "if [[ ! -f /apt-get-run ]]; then sudo apt-get update && sudo touch /apt-get-run; fi"
